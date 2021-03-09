@@ -1,1 +1,2 @@
-# dieticianapi
+# diet
+Mutfak Yapım Diyetisyen Projesi
