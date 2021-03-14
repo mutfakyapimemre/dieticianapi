@@ -20,6 +20,9 @@ Route::get("/", function (Request $request) {
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("getNutritionList", "api\\panel\\nutrients\\indexController@index");
+
 Route::group(['namespace' => 'api'], function () {
     Route::group(["namespace" => "theme", "as" => "theme."], function () {
         Route::group(['namespace' => 'home', "as" => "home.", "prefix" => "home"], function () {
