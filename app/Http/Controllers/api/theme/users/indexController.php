@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use phpDocumentor\Reflection\Types\Integer;
+use function Symfony\Component\String\s;
 
 class indexController extends Controller
 {
@@ -244,6 +245,24 @@ class indexController extends Controller
             } else {
                 return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Böyle Bir Diyetisyen Yoktur"], 200, [], JSON_UNESCAPED_UNICODE);
             }
+        }
+    }
+
+    public function storeAllergen(Request $request){
+        $auth = $request->header("Authorization");
+        if ($auth) {
+            $token = str_replace("Bearer ", "", $auth);
+            $user = User::where("api_token", $token)->first();
+
+            $nutrientIds = $request->get("nutrient_ids");
+            $store = $user->allergens()->sync($nutrientIds);
+            if($store){
+                return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Alerjen kaydı başarıyla gerçekleştirildi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }else{
+                return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Alerjen kaydı gerçekleştirilemedi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }
+        }else{
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Belirteç Uyuşmazlığı", "data" =>   []], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
 }
