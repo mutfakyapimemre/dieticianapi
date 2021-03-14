@@ -41,4 +41,8 @@ class User extends Model implements Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function allergens(){
+        return  $this->belongsToMany(Nutrients::class, "allergen_user", "nutrient_id", "user_id");
+    }
 }

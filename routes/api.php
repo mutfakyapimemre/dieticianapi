@@ -65,6 +65,7 @@ Route::group(['namespace' => 'api'], function () {
                 Route::post("/update", "indexController@update")->name("update");
                 Route::post("/pass_update", "indexController@pass_update")->name("pass_update");
                 Route::post("/dietician-update", "indexController@dieticianUpdate")->name("dietician_update");
+                Route::post("/update-allergens", "indexController@storeAllergen")->name("update-allergen");
                 Route::post("/logout", "indexController@logout")->name("logout");
             });
         });
