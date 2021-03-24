@@ -39,17 +39,22 @@ class indexController extends Controller
         $dcount = Doctors::count();
         $start = rand(0, $dcount - 8);
         $this->viewData->doctors = Doctors::where("isActive", 1)->skip($start)->take(8)->get();
+        //$this->viewData->doctors->profile_photo->img_url = null;
         foreach ($this->viewData->doctors as $doctor) {
-            if (!empty($doctor->profilePhoto)) {
+            $this->viewData->doctors->profile_photo = $doctor->profilePhoto;
+            /*
+             * if (isset($doctor->profilePhoto) && !empty($doctor->profilePhoto)) {
                 $this->viewData->doctors->profile_photo = $doctor->profilePhoto;
             } else {
                 $this->viewData->doctors->profile_photo->img_url = "";
-            }
+            }*/
         }
+
         $this->viewData->news = News::where("isActive", 1)->orderByDesc("rank")->limit(8)->get();
         foreach ($this->viewData->news as $news) {
             $this->viewData->news->doctors = $news->doctors;
         }
+
         return response()->json(["data" => $this->viewData], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
