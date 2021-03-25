@@ -20890,3 +20890,8 @@
 "} 
 [2021-03-24 21:03:35] local.INFO: [2021-03-24 21:03:35][22.133994102478 ms][127.0.0.1][GET][http://127.0.0.1:8000/api/home]  
 [2021-03-24 21:05:24] local.INFO: [2021-03-24 21:05:24][74.891519546509 ms][127.0.0.1][GET][http://127.0.0.1:8000/api/home]  
+[2021-03-25 12:09:34] local.INFO: [2021-03-25 12:09:34][90.579581260681 ms][::1][GET][http://localhost/dietician/api/home]  
+[2021-03-25 12:09:40] local.INFO: [2021-03-25 12:09:40][90.906596183777 ms][127.0.0.1][GET][http://localhost/dietician/api/home]  
+[2021-03-25 12:09:41] local.INFO: [2021-03-25 12:09:41][114.51010704041 ms][::1][GET][http://localhost/dietician/api/home]  
+[2021-03-25 12:09:52] local.INFO: [2021-03-25 12:09:52][72.257804870605 ms][127.0.0.1][GET][http://localhost/dietician/api/home]  
+[2021-03-25 12:09:53] local.INFO: [2021-03-25 12:09:53][80.695199966431 ms][::1][GET][http://localhost/dietician/api/home]  
