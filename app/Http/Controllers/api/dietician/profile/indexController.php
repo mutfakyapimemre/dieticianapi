@@ -60,7 +60,7 @@ class indexController extends Controller
                     $dietician["company_neighborhoods"] = [];
                     $dietician["company_cities"] = [];
                 }
-                return response()->json(["data" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
+                return response()->json(["success" => true,"title" => "Başarılı!","msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.","user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response()->json("Böyle Bir Kullanıcı Bulunmamaktadır.", 200, [], JSON_UNESCAPED_UNICODE);
             }
