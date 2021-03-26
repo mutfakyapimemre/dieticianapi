@@ -25,4 +25,6 @@ class Doctors extends Model implements Authenticatable
     {
         return $this->hasOne(DieticianFile::class, 'dieticians_id', "_id")->where(["type"=>"profile_photo"]);
     }
+
+
 }

@@ -203,4 +203,13 @@ class indexController extends Controller
         }
     }
 
+
+    public function appointment_conf(Request $request){
+        $auth = $request->header("Authorization");
+        if ($auth){
+            dd($request->all());
+        }else{
+            return response()->json("Böyle Bir Kullanıcı Yoktur.",200,[],JSON_UNESCAPED_UNICODE);
+        }
+    }
 }

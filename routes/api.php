@@ -274,6 +274,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::post("/update", "indexController@update")->name("update");
                     Route::post("/pass_update", "indexController@pass_update")->name("pass_update");
                     Route::post("/logout", "indexController@logout")->name("logout");
+                    Route::post("/appointment-conf","indexController@appointment_conf")->name("appointment_conf");
                 });
                 Route::group(["namespace" => "datatables", "as" => "datatables.", "prefix" => "datatables"], function () {
                     Route::get('/get-all', 'indexController@getAll')->name("index");
