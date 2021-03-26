@@ -127,7 +127,7 @@ class indexController extends Controller
                 $districts=DB::table("districts")->where("name", $data->district)->first();
 
                 $dietician["neighborhoods"]=  DB::table("neighborhoods")->select("name")->whereIn("_id", $districts["neighborhoods"])->get();
-                return "";
+                return response()->json(["success" => true,"title" => "Başarılı!","msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.","user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response()->json("Böyle Bir Kullanıcı Bulunmamaktadır.", 200, [], JSON_UNESCAPED_UNICODE);
             }
