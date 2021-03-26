@@ -41,8 +41,6 @@ class indexController extends Controller
         $doctors= Doctors::where("isActive", 1)->skip($start)->take(8)->get();
         $doctors->makeHidden(["api_token","updated_at","isActive"]);
         $this->viewData->doctors = $doctors;
-        //dd($this->viewData->doctors);
-        //$this->viewData->doctors->profile_photo->img_url = null;
         foreach ($this->viewData->doctors as $doctor) {
             $this->viewData->doctors->profile_photo = $doctor->profilePhoto;
             /*
