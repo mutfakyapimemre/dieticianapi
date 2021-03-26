@@ -29,6 +29,7 @@ class indexController extends Controller
     public function login(Request $request)
     {
         $dietician = Doctors::where("email", $request->email)->where("isActive",1)->first();
+
         if (empty($dietician)) {
             return response()->json(["success" => false,"title" => "Başarısız!","msg" => "Girmiş Olduğunuz Mail Hesabına Ait Kullanıcı Bilgisi Bulunamadı."], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
@@ -112,6 +113,7 @@ class indexController extends Controller
     public function profile(Request $request)
     {
         $auth = $request->header("Authorization");
+
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
             $dietician = Doctors::where("api_token", $token)->first();
@@ -125,7 +127,7 @@ class indexController extends Controller
                 $districts=DB::table("districts")->where("name", $data->district)->first();
 
                 $dietician["neighborhoods"]=  DB::table("neighborhoods")->select("name")->whereIn("_id", $districts["neighborhoods"])->get();
-                return response()->json(["data" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
+                return response()->json(["success" => true,"title" => "Başarılı!","msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.","user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response()->json("Böyle Bir Kullanıcı Bulunmamaktadır.", 200, [], JSON_UNESCAPED_UNICODE);
             }

@@ -34,6 +34,7 @@ class indexController extends Controller
                     if (!empty($dietician["profile_photo"])):
                         $dietician["clinic_photos"] = $dietician["clinic_photos"];
                     endif;
+
                     return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.", "user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
                 }
 
