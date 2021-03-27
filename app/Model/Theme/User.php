@@ -43,6 +43,14 @@ class User extends Model implements Authenticatable
     ];
 
     public function allergens(){
-        return  $this->belongsToMany(Nutrients::class, "allergen_user", "nutrient_id", "user_id");
+        return  $this->belongsToMany(Nutrients::class, "allergen_user", "user_id", "user_id");
+    }
+
+    public function likedFoods(){
+        return $this->belongsToMany(FoodLike::class, 'food_like', "user_id","food_id");
+    }
+
+    public function unlikedFoods(){
+        return $this->belongsToMany(FoodUnlike::class, 'food_unlike', "user_id","food_id");
     }
 }

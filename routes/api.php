@@ -29,6 +29,18 @@ Route::group(['namespace' => 'api'], function () {
             Route::get("/", "indexController@index")->name("index");
             Route::get("/search", "indexController@search")->name("search");
         });
+
+        /*
+         * Murat
+         * */
+        Route::group(['namespace' => 'users', "as" => "recipeCategories.", "prefix" => "recipe-categories"], function () {
+            Route::get("/", "indexController@index")->name("index");
+            Route::get("/{slug}", "indexController@detail")->name("detail");
+        });
+        /*
+         * ./ MURAT
+         *
+         */
         Route::group(['namespace' => 'recipeCategories', "as" => "recipeCategories.", "prefix" => "recipe-categories"], function () {
             Route::get("/", "indexController@index")->name("index");
             Route::get("/{slug}", "indexController@detail")->name("detail");
@@ -67,6 +79,10 @@ Route::group(['namespace' => 'api'], function () {
                 Route::post("/dietician-update", "indexController@dieticianUpdate")->name("dietician_update");
                 Route::post("/update-allergens", "indexController@storeAllergen")->name("update-allergen");
                 Route::post("/logout", "indexController@logout")->name("logout");
+                Route::post("/update-liked-foods", "indexController@storeLike")->name("update-like");
+                Route::post("/update-unliked-foods", "indexController@storeUnlike")->name("update-unlike");
+                Route::post("/diseases", "indexController@getDiseases")->name("get-diseases");
+                Route::post("/meals", "indexController@getMeals")->name("get-meals");
             });
         });
         Route::group(["namespace" => "dieticians", "as" => "dieticians.", "prefix" => "dieticians"], function () {
