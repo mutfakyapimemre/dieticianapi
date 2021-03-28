@@ -21141,3 +21141,8 @@
 "} 
 [2021-03-26 19:52:01] local.INFO: [2021-03-26 19:52:01][50.665593147278 ms][127.0.0.1][GET][http://127.0.0.1:8000/api/home]  
 [2021-03-26 19:53:41] local.INFO: [2021-03-26 19:53:41][23.501896858215 ms][127.0.0.1][GET][http://127.0.0.1:8000/api/home]  
+[2021-03-28 11:56:22] local.INFO: [2021-03-28 11:56:22][100.95598697662 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:13:47] local.INFO: [2021-03-28 20:13:47][195.28119564056 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:13:47] local.INFO: [2021-03-28 20:13:47][87.680292129517 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:16:09] local.INFO: [2021-03-28 20:16:09][47.24440574646 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:16:10] local.INFO: [2021-03-28 20:16:10][44.692015647888 ms][::1][GET][http://localhost/dieticianapi/api/home]  

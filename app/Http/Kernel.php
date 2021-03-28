@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         "api-token" => ApiToken::class,
         "admin-status" => AdminStatus::class,
         "dietician-status" => DieticianStatus::class,
+        'cors' => \App\Http\Middleware\Cors::class,
     ];
 }
