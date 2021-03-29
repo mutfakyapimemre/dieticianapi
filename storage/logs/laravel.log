@@ -21150,3 +21150,133 @@
 [2021-03-28 20:23:08] local.INFO: [2021-03-28 20:23:08][47.611498832703 ms][::1][GET][http://localhost/dieticianapi/api/home]  
 [2021-03-28 20:23:50] local.INFO: [2021-03-28 20:23:50][46.549606323242 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
 [2021-03-28 20:23:50] local.INFO: [2021-03-28 20:23:50][43.065094947815 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:26:28] local.INFO: [2021-03-28 20:26:28][52.044415473938 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:26:29] local.INFO: [2021-03-28 20:26:29][47.923398017883 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 20:26:34] local.INFO: [2021-03-28 20:26:34][42.51070022583 ms][::1][GET][http://localhost/dieticianapi/api/doctors?page=1]  
+[2021-03-28 20:26:36] local.INFO: [2021-03-28 20:26:36][35.099506378174 ms][::1][GET][http://localhost/dieticianapi/api/nutrients?page=1]  
+[2021-03-28 20:26:47] local.INFO: [2021-03-28 20:26:47][41.903781890869 ms][::1][GET][http://localhost/dieticianapi/api/recipe-categories?page=1]  
+[2021-03-28 20:26:50] local.INFO: [2021-03-28 20:26:50][68.632388114929 ms][::1][GET][http://localhost/dieticianapi/api/criteria?page=1]  
+[2021-03-28 20:26:59] local.INFO: [2021-03-28 20:26:59][38.692188262939 ms][::1][GET][http://localhost/dieticianapi/api/nutrients?page=1]  
+[2021-03-28 20:27:01] local.INFO: [2021-03-28 20:27:01][33.485698699951 ms][::1][GET][http://localhost/dieticianapi/api/doctors?page=1]  
+[2021-03-28 20:27:04] local.INFO: [2021-03-28 20:27:04][35.474586486816 ms][::1][GET][http://localhost/dieticianapi/api/nutrients?page=1]  
+[2021-03-28 20:27:05] local.INFO: [2021-03-28 20:27:05][32.365798950195 ms][::1][GET][http://localhost/dieticianapi/api/recipe-categories?page=1]  
+[2021-03-28 21:40:58] local.INFO: [2021-03-28 21:40:58][56.71010017395 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:40:59] local.INFO: [2021-03-28 21:40:59][45.140600204468 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:43:50] local.INFO: [2021-03-28 21:43:50][59.456706047058 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:43:51] local.INFO: [2021-03-28 21:43:51][45.179414749146 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:45:19] local.INFO: [2021-03-28 21:45:19][72.144508361816 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:45:20] local.INFO: [2021-03-28 21:45:20][43.39919090271 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:47:32] local.INFO: [2021-03-28 21:47:32][49.02868270874 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:47:33] local.INFO: [2021-03-28 21:47:33][46.358203887939 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:48:57] local.INFO: [2021-03-28 21:48:57][49.57959651947 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:48:58] local.INFO: [2021-03-28 21:48:58][46.42219543457 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:50:21] local.INFO: [2021-03-28 21:50:21][49.450302124023 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:50:22] local.INFO: [2021-03-28 21:50:22][47.793078422546 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:53:41] local.INFO: [2021-03-28 21:53:41][49.001002311707 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:53:42] local.INFO: [2021-03-28 21:53:42][46.159505844116 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:54:54] local.INFO: [2021-03-28 21:54:54][48.363018035889 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:54:56] local.INFO: [2021-03-28 21:54:56][47.445487976074 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:56:43] local.INFO: [2021-03-28 21:56:43][50.812101364136 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:56:44] local.INFO: [2021-03-28 21:56:44][46.149897575378 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:59:07] local.INFO: [2021-03-28 21:59:07][45.208096504211 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 21:59:08] local.INFO: [2021-03-28 21:59:08][46.092295646667 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:00:27] local.INFO: [2021-03-28 22:00:27][49.833798408508 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:00:28] local.INFO: [2021-03-28 22:00:28][45.934414863586 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:01:59] local.INFO: [2021-03-28 22:01:59][47.524785995483 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:02:00] local.INFO: [2021-03-28 22:02:00][50.650477409363 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:03:31] local.INFO: [2021-03-28 22:03:31][75.357890129089 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:03:32] local.INFO: [2021-03-28 22:03:32][44.6946144104 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:05:00] local.INFO: [2021-03-28 22:05:00][49.39501285553 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:05:01] local.INFO: [2021-03-28 22:05:01][46.309804916382 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:06:02] local.INFO: [2021-03-28 22:06:02][52.637481689453 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:06:03] local.INFO: [2021-03-28 22:06:03][47.048687934875 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:06:51] local.INFO: [2021-03-28 22:06:51][45.587110519409 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:06:52] local.INFO: [2021-03-28 22:06:52][38.982820510864 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:09:09] local.INFO: [2021-03-28 22:09:09][49.651002883911 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:09:10] local.INFO: [2021-03-28 22:09:10][45.06208896637 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:18] local.INFO: [2021-03-28 22:11:18][50.076508522034 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:19] local.INFO: [2021-03-28 22:11:19][44.582295417786 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:32] local.INFO: [2021-03-28 22:11:32][48.290300369263 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:33] local.INFO: [2021-03-28 22:11:33][40.329384803772 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:40] local.INFO: [2021-03-28 22:11:40][43.83819103241 ms][::1][POST][http://localhost/dieticianapi/api/users/login]  
+[2021-03-28 22:11:42] local.INFO: [2021-03-28 22:11:42][54.406499862671 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:43] local.INFO: [2021-03-28 22:11:43][61.564588546753 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:44] local.INFO: [2021-03-28 22:11:44][39.507007598877 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:50] local.INFO: [2021-03-28 22:11:50][28.870987892151 ms][::1][POST][http://localhost/dieticianapi/api/users/logout]  
+[2021-03-28 22:11:52] local.INFO: [2021-03-28 22:11:52][45.57740688324 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:11:54] local.INFO: [2021-03-28 22:11:54][40.963888168335 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:30] local.INFO: [2021-03-28 22:20:30][48.505711555481 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:31] local.INFO: [2021-03-28 22:20:31][49.006104469299 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:40] local.INFO: [2021-03-28 22:20:40][32.657814025879 ms][::1][POST][http://localhost/dieticianapi/api/users/login]  
+[2021-03-28 22:20:43] local.INFO: [2021-03-28 22:20:43][51.513409614563 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:43] local.INFO: [2021-03-28 22:20:43][51.207113265991 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:44] local.INFO: [2021-03-28 22:20:44][42.643904685974 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:46] local.INFO: [2021-03-28 22:20:46][40.704083442688 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 22:20:51] local.INFO: [2021-03-28 22:20:51][31.953883171082 ms][::1][GET][http://localhost/dieticianapi/api/panel/datatables/get-all?page=0&per_page=25&search=null&search_columns=name%2Cemail%2Cphone&table=users]  
+[2021-03-28 22:20:57] local.INFO: [2021-03-28 22:20:57][37.069511413574 ms][::1][GET][http://localhost/dieticianapi/api/panel/exercise-categories/get-all?page=1&per_page=25&search=null&search_columns=name&table=exercise_categories]  
+[2021-03-28 22:20:59] local.INFO: [2021-03-28 22:20:59][38.852906227112 ms][::1][GET][http://localhost/dieticianapi/api/panel/exercises/get-all?page=1&per_page=25&search=null&search_columns=name&table=exercises]  
+[2021-03-28 22:21:02] local.INFO: [2021-03-28 22:21:02][34.849977493286 ms][::1][GET][http://localhost/dieticianapi/api/panel/recipe-categories/get-all?page=1&per_page=25&search=null&search_columns=name&table=recipe_categories]  
+[2021-03-28 22:21:04] local.INFO: [2021-03-28 22:21:04][35.529017448425 ms][::1][GET][http://localhost/dieticianapi/api/panel/recipes/get-all?page=1&per_page=25&search=null&search_columns=name&table=recipes]  
+[2021-03-28 23:34:05] local.INFO: [2021-03-28 23:34:05][84.317111968994 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-28 23:34:07] local.INFO: [2021-03-28 23:34:07][44.412207603455 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 17:57:14] local.INFO: [2021-03-29 17:57:14][834.90481376648 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 17:57:17] local.INFO: [2021-03-29 17:57:17][28.929495811462 ms][::1][POST][http://localhost/dieticianapi/api/users/logout]  
+[2021-03-29 17:57:19] local.INFO: [2021-03-29 17:57:19][65.195107460022 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 17:57:30] local.ERROR: No suitable servers found (`serverSelectionTryOnce` set): [connection timeout calling ismaster on 'ns-1.mutfakyapim.com.tr:27017'] {"exception":"[object] (MongoDB\\Driver\\Exception\\ConnectionTimeoutException(code: 13053): No suitable servers found (`serverSelectionTryOnce` set): [connection timeout calling ismaster on 'ns-1.mutfakyapim.com.tr:27017'] at C:\\xampp\\htdocs\\dieticianapi\\vendor\\mongodb\\mongodb\\src\\functions.php:431)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\dieticianapi\\vendor\\mongodb\\mongodb\\src\\functions.php(431): MongoDB\\Driver\\Manager->selectServer(Object(MongoDB\\Driver\\ReadPreference))
+#1 C:\\xampp\\htdocs\\dieticianapi\\vendor\\mongodb\\mongodb\\src\\Collection.php(651): MongoDB\\select_server(Object(MongoDB\\Driver\\Manager), Array)
+#2 [internal function]: MongoDB\\Collection->find(Array, Array)
+#3 C:\\xampp\\htdocs\\dieticianapi\\vendor\\jenssegers\\mongodb\\src\\Jenssegers\\Mongodb\\Collection.php(42): call_user_func_array(Array, Array)
+#4 C:\\xampp\\htdocs\\dieticianapi\\vendor\\jenssegers\\mongodb\\src\\Jenssegers\\Mongodb\\Query\\Builder.php(399): Jenssegers\\Mongodb\\Collection->__call('find', Array)
+#5 C:\\xampp\\htdocs\\dieticianapi\\vendor\\jenssegers\\mongodb\\src\\Jenssegers\\Mongodb\\Query\\Builder.php(192): Jenssegers\\Mongodb\\Query\\Builder->getFresh(Array)
+#6 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(588): Jenssegers\\Mongodb\\Query\\Builder->get(Array)
+#7 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php(572): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 C:\\xampp\\htdocs\\dieticianapi\\app\\Http\\Controllers\\api\\theme\\home\\indexController.php(29): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 [internal function]: App\\Http\\Controllers\\Api\\Theme\\Home\\indexController->__construct()
+#10 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(877): ReflectionClass->newInstanceArgs(Array)
+#11 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(714): Illuminate\\Container\\Container->build('App\\\\Http\\\\Contro...')
+#12 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(841): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Contro...', Array, true)
+#13 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(652): Illuminate\\Foundation\\Application->resolve('App\\\\Http\\\\Contro...', Array)
+#14 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(826): Illuminate\\Container\\Container->make('App\\\\Http\\\\Contro...', Array)
+#15 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(268): Illuminate\\Foundation\\Application->make('App\\\\Http\\\\Contro...')
+#16 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(1019): Illuminate\\Routing\\Route->getController()
+#17 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php(980): Illuminate\\Routing\\Route->controllerMiddleware()
+#18 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(710): Illuminate\\Routing\\Route->gatherMiddleware()
+#19 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(686): Illuminate\\Routing\\Router->gatherRouteMiddleware(Object(Illuminate\\Routing\\Route))
+#20 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(670): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#21 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(636): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#22 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(625): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#23 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(166): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#24 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#25 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(86): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 C:\\xampp\\htdocs\\dieticianapi\\vendor\\fruitcake\\laravel-cors\\src\\HandleCors.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fruitcake\\Cors\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 C:\\xampp\\htdocs\\dieticianapi\\vendor\\fideloper\\proxy\\src\\TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(167): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#39 C:\\xampp\\htdocs\\dieticianapi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#40 C:\\xampp\\htdocs\\dieticianapi\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#41 C:\\xampp\\htdocs\\dieticianapi\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
+#42 {main}
+"} 
+[2021-03-29 17:57:39] local.INFO: [2021-03-29 17:57:39][51.780414581299 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 17:57:40] local.INFO: [2021-03-29 17:57:40][44.492602348328 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 18:30:19] local.INFO: [2021-03-29 18:30:19][56.253790855408 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 18:30:19] local.INFO: [2021-03-29 18:30:19][54.895806312561 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 18:30:19] local.INFO: [2021-03-29 18:30:19][46.442413330078 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 18:30:20] local.INFO: [2021-03-29 18:30:20][47.984409332275 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-29 18:30:26] local.INFO: [2021-03-29 18:30:26][46.029806137085 ms][::1][POST][http://localhost/dieticianapi/api/panel/login]  
+[2021-03-29 18:30:27] local.INFO: [2021-03-29 18:30:27][44.284987449646 ms][::1][GET][http://localhost/dieticianapi/api/users/profile]  
+[2021-03-29 18:30:41] local.INFO: [2021-03-29 18:30:41][34.329891204834 ms][::1][POST][http://localhost/dieticianapi/api/panel/login]  
+[2021-03-29 18:30:42] local.INFO: [2021-03-29 18:30:42][51.374983787537 ms][::1][GET][http://localhost/dieticianapi/api/users/profile]  
+[2021-03-29 18:31:40] local.INFO: [2021-03-29 18:31:40][37.267899513245 ms][::1][POST][http://localhost/dieticianapi/api/panel/login]  
+[2021-03-29 18:31:41] local.INFO: [2021-03-29 18:31:41][69.589304924011 ms][::1][GET][http://localhost/dieticianapi/api/users/profile]  
