@@ -248,12 +248,45 @@ class indexController extends Controller
         }
     }
 
+    public function storeLike(Request $request){
+        $auth = $request->header("Authorization");
+        if ($auth) {
+            $token = str_replace("Bearer ", "", $auth);
+            $user = User::where("id", $request->user_id)->first();
+            $likedIds = $request->get("liked_ids");
+            $store = $user->likedFoods()->sync($likedIds);
+            if($store){
+                return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Kayıt başarıyla gerçekleştirildi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }else{
+                return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Kayıt gerçekleştirilemedi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }
+        }else{
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Belirteç Uyuşmazlığı", "data" =>   []], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function storeUnlike(Request $request){
+        $auth = $request->header("Authorization");
+        if ($auth) {
+            $token = str_replace("Bearer ", "", $auth);
+            $user = User::where("id", $request->user_id)->first();
+            $unlikedIds = $request->get("unliked_ids");
+            $store = $user->unlikedFoods()->sync($unlikedIds);
+            if($store){
+                return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Kayıt başarıyla gerçekleştirildi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }else{
+                return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Kayıt gerçekleştirilemedi", "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
+            }
+        }else{
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Belirteç Uyuşmazlığı", "data" =>   []], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function storeAllergen(Request $request){
         $auth = $request->header("Authorization");
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
-            $user = User::where("api_token", $token)->first();
-
+            $user = User::where("id", $request->user_id)->first();
             $nutrientIds = $request->get("nutrient_ids");
             $store = $user->allergens()->sync($nutrientIds);
             if($store){
@@ -264,5 +297,15 @@ class indexController extends Controller
         }else{
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Belirteç Uyuşmazlığı", "data" =>   []], 200, [], JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    public function getDiseases(){
+        $diseases = DB::table("diseases")->get();
+        return \response()->json(["data" => $diseases, "diseaseCount" => $diseases->count(), "success" => true], 200, [], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getMeals(){
+        $meals = DB::table("meals")->get();
+        return \response()->json(["data" => $meals, "mealCount" => $meals->count(), "success" => true], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
