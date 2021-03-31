@@ -76,7 +76,7 @@ Route::group(['namespace' => 'api'], function () {
             });
         });
         Route::group(["namespace" => "dieticians", "as" => "dieticians.", "prefix" => "dieticians"], function () {
-            Route::get("/dietician", "indexController@dietician")->name("dietician");
+            Route::get("/dieticians", "indexController@dieticians")->name("dieticians");
             Route::get("/login", "indexController@login")->name("login");
             Route::post("/login", "indexController@login")->name("login");
             Route::post("/register", "indexController@register")->name("register");

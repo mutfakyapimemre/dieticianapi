@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\Theme\dietician;
+namespace App\Http\Controllers\Api\Theme\Dietician;
 
 use App\Http\Controllers\Controller;
-use App\Model\Theme\Dieticians;
+use App\MoDel\Theme\Dieticians;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

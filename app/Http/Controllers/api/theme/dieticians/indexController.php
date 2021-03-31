@@ -1,9 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Api\Theme\dieticians;
+namespace App\Http\Controllers\Api\Theme\Dieticians;
 
 use App\Http\Controllers\Controller;
 use App\Model\Theme\Dieticians;
+use App\Model\Theme\Corporate;
+use App\Model\Theme\FoodDecided;
+use App\Model\Theme\News;
+use App\Model\Theme\Nutrients;
+use App\Model\Theme\Settings;
+use App\Model\Theme\Sliders;
+use App\Model\Theme\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +21,15 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class indexController extends Controller
 {
+    public function __construct()
+    {
+        $this->viewData = new \stdClass();
+        $this->viewData->menus = new \stdClass();
+        $this->viewData->menus->corporate = Corporate::where("isActive", 1)->get(["title", "seo_url"]);
+        $this->viewData->menus->food_decides = FoodDecided::where("isActive", 1)->get(["title", "seo_url"]);
+        $this->viewData->settings = Settings::where("isActive", 1)->orderBy("rank")->first();
+        $this->viewData->baseURL = urlencode(url("/"));
+    }
     public function index(Request $request)
     {
         $auth = $request->header("Authorization");
