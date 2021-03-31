@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class indexController extends Controller
 {
     public function getAll(Request $request)
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
-        $response =DB::table($request->table);
+        $response = DB::table($request->table);
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
@@ -38,7 +39,7 @@ class indexController extends Controller
             $request->search_columns = (array)$request->search_columns;
         }
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
-        $response =DB::table($request->table);
+        $response = DB::table($request->table);
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
@@ -50,13 +51,13 @@ class indexController extends Controller
                 $response = $response->where($v, $request->where_value[$k]);
             }
         }
-        foreach ($request->search_columns as $k=>$column) {
-            $response=$response->where(function($query) use ($column,$request){
-				$query->orwhere($column,"like","%".Str::strto("lower",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|ucfirst",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|ucwords",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|upper",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|capitalizefirst",$request->search) ."%");
+        foreach ($request->search_columns as $k => $column) {
+            $response = $response->where(function ($query) use ($column, $request) {
+                $query->orwhere($column, "like", "%" . Str::strto("lower", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|ucfirst", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|ucwords", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|upper", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|capitalizefirst", $request->search) . "%");
             });
         }
         $response = $response->paginate($per_page);
@@ -67,7 +68,7 @@ class indexController extends Controller
     public function getByOrder(Request $request)
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
-        $response =DB::table($request->table);
+        $response = DB::table($request->table);
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
