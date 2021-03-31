@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Panel\Sliders;
 
 use App\Http\Controllers\Controller;
-use App\Model\Panel\Doctors;
+use App\Model\Panel\Dieticians;
 use App\Model\Panel\Sliders;
 use App\Model\Theme\User;
 use Facade\IgnitionContracts\HasSolutionsForThrowable;
@@ -144,7 +144,7 @@ class indexController extends Controller
             return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Slider Başarıyla Slindi"], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
-	
+
 	public function getAll(Request $request)
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
@@ -171,7 +171,7 @@ class indexController extends Controller
 
         return response()->json(["data" => $response,"empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
-	
+
 	public function getBySearch(Request $request)
     {
         if (empty($request->search) || $request->search == "null") {
@@ -210,7 +210,7 @@ class indexController extends Controller
         }*/
         return response()->json(["data" => $response,"empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
-	
+
 	public function getByOrder(Request $request)
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
@@ -227,7 +227,7 @@ class indexController extends Controller
             }
         }
         $response = $response->orderBy($request->sortBy, $request->direction)->paginate($per_page);
-		
+
         /*foreach ($response as $key => $item) {
             $response[$key]["img_url"] = "uploads/settings/preparing/my.jpg";
             foreach ($item->nutrients as $v) {

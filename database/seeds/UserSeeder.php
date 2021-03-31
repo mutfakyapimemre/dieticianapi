@@ -12,14 +12,13 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        for($i=0;$i<=10000;$i++){
-            $add=new \App\Model\Panel\Doctors;
+        for ($i = 0; $i <= 10000; $i++) {
+            $add = new \App\Model\Panel\Dieticians;
 
-            $add->name=Str::random(10);
-            $add->email=Str::random(10).'@gmail.com';
-            $add->password=Hash::make('password');
-           $add->save();
+            $add->name = Str::random(10);
+            $add->email = Str::random(10) . '@gmail.com';
+            $add->password = Hash::make('password');
+            $add->save();
         }
-
     }
 }

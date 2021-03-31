@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Dietician\Recipes;
 
 use App\Http\Controllers\Controller;
-use App\Model\Panel\Doctors;
+use App\Model\Panel\Dieticians;
 use App\Model\Panel\Recipes;
 use App\Model\Theme\User;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class indexController extends Controller
     {
         $bearer = $request->header("Authorization");
         $bearer = str_replace("Bearer ", "", $bearer);
-        $user = Doctors::where("api_token", $bearer)
+        $user = Dieticians::where("api_token", $bearer)
             ->first();
         if ($user) {
             $this->user = $user;
@@ -62,7 +62,7 @@ class indexController extends Controller
             $data["rank"] = $count + 1;
             $data["isActive"] = 1;
             $data["slug"] = Str::slug($data["name"], "-");
-            $data["createdAt"]=date("d/m/Y",strtotime("now"));
+            $data["createdAt"] = date("d/m/Y", strtotime("now"));
 
             $data["dietician_id"] = $this->user->_id;
             unset($data["vitaminName"]);
@@ -107,7 +107,6 @@ class indexController extends Controller
             }
         } else {
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "İd Paremetresi Boş Olamaz!"], 200, [], JSON_UNESCAPED_UNICODE);
-
         }
     }
 
@@ -115,7 +114,7 @@ class indexController extends Controller
     {
         if (!empty($request->file())) {
             $status = 1;
-            foreach ($request->file("file") as $key => $file):
+            foreach ($request->file("file") as $key => $file) :
 
                 $strFileName = Str::slug($request->title);
                 $extension = $file->extension();
@@ -137,7 +136,6 @@ class indexController extends Controller
             } else {
                 return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Resimler Başarıyla Eklendi"], 200, [], JSON_UNESCAPED_UNICODE);
             }
-
         }
     }
 
@@ -157,9 +155,7 @@ class indexController extends Controller
             return response(["success" => true, "data" => $nutrients], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Böyle Bir Veri Bulunamadı!"], 200, [], JSON_UNESCAPED_UNICODE);
-
         }
-
     }
 
     public function update($id, Request $request)
@@ -227,7 +223,6 @@ class indexController extends Controller
             return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Ayarınız Başarıyla Silindi", "data" => $nutrients], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Ayarınız Silinirken Bir Hata İle Karşılaşıldı."], 200, [], JSON_UNESCAPED_UNICODE);
-
         }
     }
 
@@ -235,7 +230,7 @@ class indexController extends Controller
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
         $response = new Recipes;
-		$response = $response->with("recipes");
+        $response = $response->with("recipes");
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
@@ -256,7 +251,7 @@ class indexController extends Controller
 
         }*/
 
-        return response()->json(["data" => $response,"empty_url" => "uploads/settings/preparing/my.jpg"]);
+        return response()->json(["data" => $response, "empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
 
     public function getBySearch(Request $request)
@@ -270,7 +265,7 @@ class indexController extends Controller
         }
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
         $response = new Recipes;
-		$response = $response->with("recipes");
+        $response = $response->with("recipes");
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
@@ -282,13 +277,13 @@ class indexController extends Controller
                 $response = $response->where($v, $request->where_value[$k]);
             }
         }
-      foreach ($request->search_columns as $k=>$column) {
-            $response=$response->where(function($query) use ($column,$request){
-				$query->orwhere($column,"like","%".Str::strto("lower",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|ucfirst",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|ucwords",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|upper",$request->search) ."%")
-                       ->orWhere($column,"like","%".Str::strto("lower|capitalizefirst",$request->search) ."%");
+        foreach ($request->search_columns as $k => $column) {
+            $response = $response->where(function ($query) use ($column, $request) {
+                $query->orwhere($column, "like", "%" . Str::strto("lower", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|ucfirst", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|ucwords", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|upper", $request->search) . "%")
+                    ->orWhere($column, "like", "%" . Str::strto("lower|capitalizefirst", $request->search) . "%");
             });
         }
         $response = $response->paginate($per_page);
@@ -298,14 +293,14 @@ class indexController extends Controller
                 $response[$key]["img_url"] = $v->img_url;
             }
         }*/
-        return response()->json(["data" => $response,"empty_url" => "uploads/settings/preparing/my.jpg"]);
+        return response()->json(["data" => $response, "empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
 
     public function getByOrder(Request $request)
     {
         $per_page = empty($request->per_page) ? 10 : (int)$request->per_page;
         $response = new Recipes;
-		$response = $response->with("recipes");
+        $response = $response->with("recipes");
         if (!empty($request->where_column)) {
             $request->where_column = explode(",", $request->where_column);
             $request->where_value = explode(",", $request->where_value);
@@ -324,7 +319,6 @@ class indexController extends Controller
                 $response[$key]["img_url"] = $v->img_url;
             }
         }*/
-        return response()->json(["data" => $response,"empty_url" => "uploads/settings/preparing/my.jpg"]);
+        return response()->json(["data" => $response, "empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
-
 }

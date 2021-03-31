@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::get("/", function (Request $request) {
     dd($request->getSchemeAndHttpHost());
 });
@@ -86,7 +87,7 @@ Route::group(['namespace' => 'api'], function () {
                 Route::post("/logout", "indexController@logout")->name("logout");
             });
         });
-        Route::group(["namespace" => "doctors", "as" => "doctors.", "prefix" => "doctors"], function () {
+        Route::group(["namespace" => "dieticians", "as" => "dieticians.", "prefix" => "dieticians"], function () {
             Route::get("/", "indexController@index")->name("index");
         });
     });
@@ -111,7 +112,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-					Route::get('/get-all', 'indexController@getAll')->name("index");
+                    Route::get('/get-all', 'indexController@getAll')->name("index");
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
@@ -121,11 +122,11 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-					Route::get('/get-all', 'indexController@getAll')->name("index");
+                    Route::get('/get-all', 'indexController@getAll')->name("index");
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
-                Route::group(['namespace' => 'doctors', "as" => "doctors.", "prefix" => "doctors"], function () {
+                Route::group(['namespace' => 'dieticians', "as" => "dieticians.", "prefix" => "dieticians"], function () {
                     Route::get("/", "indexController@index")->name("index");
                     Route::post("/create", "indexController@store")->name("store");
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
@@ -141,7 +142,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-					Route::get('/get-all', 'indexController@getAll')->name("getAll");
+                    Route::get('/get-all', 'indexController@getAll')->name("getAll");
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
@@ -151,7 +152,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-					Route::get('/get-all', 'indexController@getAll')->name("index");
+                    Route::get('/get-all', 'indexController@getAll')->name("index");
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
@@ -161,7 +162,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-					Route::get('/get-all', 'indexController@getAll')->name("index");
+                    Route::get('/get-all', 'indexController@getAll')->name("index");
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
@@ -177,7 +178,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
-				 Route::group(["namespace" => "edietfoods", "as" => "edietfoods.", "prefix" => "e-diet-foods"], function () {
+                Route::group(["namespace" => "edietfoods", "as" => "edietfoods.", "prefix" => "e-diet-foods"], function () {
                     Route::get("/", "indexController@index")->name("index");
                     Route::get("/create", "indexController@save")->name("save");
                     Route::post("/create", "indexController@store")->name("store");
@@ -279,7 +280,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::post("/update", "indexController@update")->name("update");
                     Route::post("/pass_update", "indexController@pass_update")->name("pass_update");
                     Route::post("/logout", "indexController@logout")->name("logout");
-                    Route::post("/appointment-conf","indexController@appointment_conf")->name("appointment_conf");
+                    Route::post("/appointment-conf", "indexController@appointment_conf")->name("appointment_conf");
                 });
                 Route::group(["namespace" => "datatables", "as" => "datatables.", "prefix" => "datatables"], function () {
                     Route::get('/get-all', 'indexController@getAll')->name("index");
@@ -303,7 +304,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
                 });
-                Route::group(['namespace' => 'doctors', "as" => "doctors.", "prefix" => "doctors"], function () {
+                Route::group(['namespace' => 'dieticians', "as" => "dieticians.", "prefix" => "dieticians"], function () {
                     Route::get("/", "indexController@index")->name("index");
                     Route::post("/create", "indexController@store")->name("store");
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
@@ -331,7 +332,7 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get('/get-by-search', 'indexController@getBySearch');
                     Route::get('/get-by-order', 'indexController@getByOrder');
                 });
-				Route::group(["namespace" => "ediets", "as" => "ediets.", "prefix" => "e-diets"], function () {
+                Route::group(["namespace" => "ediets", "as" => "ediets.", "prefix" => "e-diets"], function () {
                     Route::get("/", "indexController@index")->name("index");
                     Route::get("/create/{id}", "indexController@save")->name("save");
                     Route::post("/create", "indexController@store")->name("store");

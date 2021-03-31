@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Model\Theme;
+
 use App\Model\Panel\exercises_file;
 use Illuminate\Notifications\Notifiable;
-use Jenssegers\Mongodb\Eloquent\Model ;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Auth\Authenticatable as Authenticabletrait;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class Doctors extends Model implements Authenticatable
+class Dieticians extends Model implements Authenticatable
 {
     use Authenticabletrait;
     use Notifiable;
-    protected $connection="mongodb";
-    protected $collection = 'doctors';
+    protected $connection = "mongodb";
+    protected $collection = 'dieticians';
     protected $guarded = [];
-    protected $hidden =["_id","password"];
+    protected $hidden = ["_id", "password"];
     protected $primarykey = "_id";
 
     public function news()
@@ -23,8 +24,6 @@ class Doctors extends Model implements Authenticatable
     }
     public function profilePhoto()
     {
-        return $this->hasOne(DieticianFile::class, 'dieticians_id', "_id")->where(["type"=>"profile_photo"]);
+        return $this->hasOne(DieticianFile::class, 'dieticians_id', "_id")->where(["type" => "profile_photo"]);
     }
-
-
 }

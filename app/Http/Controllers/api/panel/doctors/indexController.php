@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\Panel\Doctors;
+namespace App\Http\Controllers\Api\Panel\Dieticians;
 
 use App\Http\Controllers\Controller;
-use App\Model\Panel\Doctors;
+use App\Model\Panel\Dieticians;
 use App\Model\Theme\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -37,9 +37,9 @@ class indexController extends Controller
         if ($this->status != "admin") {
             return response()->json("Bu İşlem İçin Yetkili Değilsiniz", 200, [], JSON_UNESCAPED_UNICODE);
         } else {
-            $doctors = DB::table("doctors")->get();
-            if ($doctors) {
-                return response($doctors, 200, [], JSON_UNESCAPED_UNICODE);
+            $dieticians = DB::table("dieticians")->get();
+            if ($dieticians) {
+                return response($dieticians, 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response("Listelenecek Veri Bulunmamaktadır.", 200, [], JSON_UNESCAPED_UNICODE);
             }
@@ -54,34 +54,34 @@ class indexController extends Controller
             "address" => "required",
             "about_us" => "required",
             "company_name" => "required",
-            "email" => "required|email|unique:doctors",
+            "email" => "required|email|unique:dieticians",
             "phone" => "required|numeric",
         ]);
-        $doctors = new Doctors;
+        $dieticians = new Dieticians;
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200, [], JSON_UNESCAPED_UNICODE);
         } else {
-            $slug= Str::slug( $request->name,"-");
-            $control=Doctors::where("name",$doctors->name)->count();
-            if($control){
-                $doctors->slug=$slug."-".$control;
-            }else{
-                $doctors->slug=$slug;
+            $slug = Str::slug($request->name, "-");
+            $control = Dieticians::where("name", $dieticians->name)->count();
+            if ($control) {
+                $dieticians->slug = $slug . "-" . $control;
+            } else {
+                $dieticians->slug = $slug;
             }
-            $rank=Doctors::count();
-            $data["rank"]=$rank+1;
-            $doctors->name = $request->name;
-            $doctors->password = Hash::make($request->password);
-            $doctors->email = $request->email;
-            $doctors->phone = $request->phone;
-            $doctors->address = $request->address;
-            $doctors->img_url = $request->img_url;
-            $doctors->about_us = $request->about_us;
-            $doctors->company_name = $request->company_name;
-            $doctors->rank=$rank;
+            $rank = Dieticians::count();
+            $data["rank"] = $rank + 1;
+            $dieticians->name = $request->name;
+            $dieticians->password = Hash::make($request->password);
+            $dieticians->email = $request->email;
+            $dieticians->phone = $request->phone;
+            $dieticians->address = $request->address;
+            $dieticians->img_url = $request->img_url;
+            $dieticians->about_us = $request->about_us;
+            $dieticians->company_name = $request->company_name;
+            $dieticians->rank = $rank;
         }
-        $doctors->save();
-        return response($doctors, 200, [], JSON_UNESCAPED_UNICODE);
+        $dieticians->save();
+        return response($dieticians, 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function edit($id)
@@ -89,10 +89,10 @@ class indexController extends Controller
         if ($this->status != "admin") {
             return response()->json("Bu İşlem İçin Yetkili Değilsiniz", 200, [], JSON_UNESCAPED_UNICODE);
         } else {
-            $doctors = Doctors::where("_id", $id)
+            $dieticians = Dieticians::where("_id", $id)
                 ->first();
-            if ($doctors) {
-                return response()->json(["data" => $doctors], 200, [], JSON_UNESCAPED_UNICODE);
+            if ($dieticians) {
+                return response()->json(["data" => $dieticians], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response("Böyle Bir Kullanıcı Yoktur.", 200, [], JSON_UNESCAPED_UNICODE);
             }
@@ -105,8 +105,8 @@ class indexController extends Controller
             return response()->json("Bu İşlem İçin Yetkili Değilsiniz", 200, [], JSON_UNESCAPED_UNICODE);
         } else {
             if ($id) {
-                $doctors = Doctors::where("_id", $id)->first();
-                if ($doctors) {
+                $dieticians = Dieticians::where("_id", $id)->first();
+                if ($dieticians) {
                     $data = $request->except("_token");
                     if (!empty($data["password"])) {
                         $validator = Validator::make($request->all(), [
@@ -129,14 +129,14 @@ class indexController extends Controller
                         $fileNameWithExtension = $photo->getClientOriginalName();
                         $name = Str::slug($data["name"], "-");
                         $fileNameWithExtension = $name . "-" . rand(0, 99999999999) . "-" . time() . "." . $extension;
-                        $path = $request->img_url->storeAs("uploads/doctors/{$name}", $fileNameWithExtension, "public");
-                        if(!empty($path)){
-                            Storage::delete("public/".$doctors->img_url);
+                        $path = $request->img_url->storeAs("uploads/dieticians/{$name}", $fileNameWithExtension, "public");
+                        if (!empty($path)) {
+                            Storage::delete("public/" . $dieticians->img_url);
                         }
                         $data["img_url"] = $path;
                     }
 
-                    $update = Doctors::where("_id", $id)
+                    $update = Dieticians::where("_id", $id)
                         ->update($data);
                     if ($update) {
                         return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Güncelleme İşlemi Başarılı"], 200, [], JSON_UNESCAPED_UNICODE);
@@ -146,7 +146,6 @@ class indexController extends Controller
                 } else {
                     return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Böyle Bir Kullanıcı Bulunmamaktadır"], 200, [], JSON_UNESCAPED_UNICODE);
                 }
-
             }
         }
     }
@@ -165,5 +164,4 @@ class indexController extends Controller
             }
         }
     }
-
 }

@@ -46,11 +46,9 @@ class indexController extends Controller
             ->first();
         if ($users) {
             return response()->json(["data" => $users], 200);
-
         } else {
             return response("Böyle Bir Kullanıcı Yoktur.", 200, [], JSON_UNESCAPED_UNICODE);
         }
-
     }
 
     public function getUser(Request $request)
@@ -61,11 +59,9 @@ class indexController extends Controller
             ->first();
         if ($users) {
             return response()->json(["data" => $users], 200);
-
         } else {
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Bu Bilgilere Ait Bir Kullanıcı Bulunmamaktadır."], 200, [], JSON_UNESCAPED_UNICODE);
         }
-
     }
 
     public function userMail(Request $request)
@@ -75,24 +71,24 @@ class indexController extends Controller
             ->where("phone", $request->phone)
             ->first();
 
-        $dietician = DB::table("doctors")
+        $dietician = DB::table("dieticians")
             ->where("_id", $request->dietician_id)
             ->first();
         if (!empty($users) && !empty($dietician)) {
             $key = rand(100000, 999999);
             $update = Db::table("users")->where("tc", $request->tc)
                 ->where("phone", $request->phone)->update(["dietician_check" => $key]);
-			        $settings = Settings::where("isActive", 1)->first();
-			
+            $settings = Settings::where("isActive", 1)->first();
+
 
             $data = [
                 'name' => $users["name"],
                 'mail' => $users["email"],
                 "headers" => $request->header("referer"),
-				"host"=>$request->header("host"),
+                "host" => $request->header("host"),
                 "dietician" => $dietician,
                 "key" => $key,
-				"logo"=>asset("storage/".$settings->logo)
+                "logo" => asset("storage/" . $settings->logo)
             ];
             $mail = MailJobs::dispatch($data, $users);
 

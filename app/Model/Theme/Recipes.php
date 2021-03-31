@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Model\Theme;
+
 use Illuminate\Notifications\Notifiable;
-use Jenssegers\Mongodb\Eloquent\Model ;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Auth\Authenticatable as Authenticabletrait;
 use Illuminate\Contracts\Auth\Authenticatable;
 
@@ -15,11 +17,10 @@ class Recipes extends Model implements Authenticatable
     protected $guarded = [];
     public function recipePhoto()
     {
-        return $this->hasMany(RecipesFile::class, 'recipes_id', "_id")->where(["isCover"=>1]);
+        return $this->hasMany(RecipesFile::class, 'recipes_id', "_id")->where(["isCover" => 1]);
     }
-	 public function recipeDietician()
+    public function recipeDietician()
     {
-        return $this->hasOne(Doctors::class, '_id', "dietician_id");
+        return $this->hasOne(Dieticians::class, '_id', "dietician_id");
     }
-
 }

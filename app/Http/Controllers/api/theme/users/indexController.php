@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Theme\Users;
 
 use App\Http\Controllers\Controller;
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use App\Model\Theme\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -217,7 +217,7 @@ class indexController extends Controller
         if ($validator->fails()) {
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Girdiğiniz Bilgileri Kontrol Edin", "error" => $validator->messages()], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
-            $dietician = Doctors::where("slug", $request->slug)->first();
+            $dietician = Dieticians::where("slug", $request->slug)->first();
             if (!empty($dietician)) {
                 $auth = $request->header("Authorization");
                 if ($auth) {

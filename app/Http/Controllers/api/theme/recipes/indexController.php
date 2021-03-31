@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Theme\Recipes;
 use App\Http\Controllers\Controller;
 use App\Model\Theme\Corporate;
 use App\Model\Theme\DieticianFile;
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use App\Model\Theme\FoodDecided;
 use App\Model\Theme\Recipes;
 use App\Model\Theme\RecipesFile;
@@ -37,17 +37,15 @@ class indexController extends Controller
     {
         $response = Recipes::where(["isActive" => 1])->where("slug", $request->slug)->first();
         $response["photos"] = RecipesFile::where("isActive", 1)->where("recipe_id", $response->id)->get();
-        if (!empty($response->dietician_id)):
-            $response["dietician"] = Doctors::where("isActive", 1)->where("_id", $response->dietician_id)->first();
+        if (!empty($response->dietician_id)) :
+            $response["dietician"] = Dieticians::where("isActive", 1)->where("_id", $response->dietician_id)->first();
             $response["dietician"]["img_url"] = DieticianFile::where("isActive", 1)->where("type", "profile_photo")->where("dieticians_id", $response["dietician"]->id)->first()->img_url;
         endif;
         if (!empty($response)) {
             return response()->json(["data" => $response], 200, [], JSON_UNESCAPED_UNICODE);
-        }
-        else {
+        } else {
 
             return response()->json(["title" => "Başarısız!", "msg" => "Gösterilecek Bir Besin Bulunamamıştır.", "success" => false, "data" => null], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
-
 }

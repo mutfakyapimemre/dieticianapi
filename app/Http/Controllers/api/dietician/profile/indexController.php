@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Dietician\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use App\Model\Theme\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,15 +18,15 @@ class indexController extends Controller
         $auth = $request->header("Authorization");
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
-            $dietician = Doctors::where("api_token", $token)->first();
+            $dietician = Dieticians::where("api_token", $token)->first();
             $dietician["company_logo"] = DB::table("dieticians_file")->where("dieticians_id", $dietician->_id)->where("type", "company_logo")->first();
             $dietician["clinic_photos"] = DB::table("dieticians_file")->where("dieticians_id", $dietician->_id)->where("type", "clinic_photos")->get();
             $dietician["profile_photo"] = DB::table("dieticians_file")->where("dieticians_id", $dietician->_id)->where("type", "profile_photo")->first();
 
-            if (!empty($dietician["company_logo"])):
+            if (!empty($dietician["company_logo"])) :
                 $dietician["company_logo"] = $dietician["company_logo"]["img_url"];
             endif;
-            if (!empty($dietician["profile_photo"])):
+            if (!empty($dietician["profile_photo"])) :
                 $dietician["profile_photo"] = $dietician["profile_photo"]["img_url"];
             endif;
             if ($dietician) {
@@ -60,7 +60,7 @@ class indexController extends Controller
                     $dietician["company_neighborhoods"] = [];
                     $dietician["company_cities"] = [];
                 }
-                return response()->json(["success" => true,"title" => "Başarılı!","msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.","user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
+                return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Merhaba \"{$dietician->name}\" Başarıyla Giriş Yaptınız Yönlendiriliyorsunuz.", "user" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response()->json("Böyle Bir Kullanıcı Bulunmamaktadır.", 200, [], JSON_UNESCAPED_UNICODE);
             }
@@ -74,20 +74,20 @@ class indexController extends Controller
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
         }
-        $user = Doctors::where("api_token", $token)->first();
+        $user = Dieticians::where("api_token", $token)->first();
         if ($user) {
             $data = $request->except("_token");
             if (!empty($data["status"])) {
                 unset($data["status"]);
             }
-            $update = Doctors::where("api_token", $token)->update($data);
+            $update = Dieticians::where("api_token", $token)->update($data);
             unset($data);
             if ($update) {
 
                 if (!empty($request->file())) {
                     $status = 1;
-                    foreach ($request->file() as $key => $file):
-                        if (is_array($file)):
+                    foreach ($request->file() as $key => $file) :
+                        if (is_array($file)) :
                             foreach ($file as  $v) {
                                 $strFileName = Str::slug($request->title);
                                 $extension = $v->extension();
@@ -125,15 +125,15 @@ class indexController extends Controller
 
                     endforeach;
                 }
-                $user = Doctors::where("api_token", $token)->first();
+                $user = Dieticians::where("api_token", $token)->first();
                 $user["company_logo"] = DB::table("dieticians_file")->where("dieticians_id", $user->_id)->where("type", "company_logo")->first();
                 $user["clinic_photos"] = DB::table("dieticians_file")->where("dieticians_id", $user->_id)->where("type", "clinic_photos")->get();
                 $user["profile_photo"] = DB::table("dieticians_file")->where("dieticians_id", $user->_id)->where("type", "profile_photo")->first();
 
-                if (!empty($user["company_logo"])):
+                if (!empty($user["company_logo"])) :
                     $user["company_logo"] = $user["company_logo"]["img_url"];
                 endif;
-                if (!empty($user["profile_photo"])):
+                if (!empty($user["profile_photo"])) :
                     $user["profile_photo"] = $user["profile_photo"]["img_url"];
                 endif;
                 return response()->json(["msg" => "Güncelleme İşlemi Başarılı", "title" => "Başarılı", "success" => true, "data" => $user], 200, [], JSON_UNESCAPED_UNICODE);
@@ -151,7 +151,7 @@ class indexController extends Controller
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
         }
-        $user = Doctors::where("api_token", $token)->first();
+        $user = Dieticians::where("api_token", $token)->first();
         if ($user) {
             $data = $request->except("_token");
             if (Hash::check($data["current_password"], $user->password)) {
@@ -164,19 +164,19 @@ class indexController extends Controller
                     unset($data["password_confirmation"]);
                     unset($data["current_password"]);
                     $data["password"] = Hash::make($data["password"]);
-                    $update = Doctors::where("api_token", $token)->update($data);
+                    $update = Dieticians::where("api_token", $token)->update($data);
                     if ($update) {
-                        $doctor=Doctors::where("api_token",$token)->first();
-                        return response()->json(["msg" => "Güncelleme İşlemi Başarılı", "title" => "Başarılı", "success" => true,"data"=>$doctor], 200, [], JSON_UNESCAPED_UNICODE);
+                        $dietician = Dieticians::where("api_token", $token)->first();
+                        return response()->json(["msg" => "Güncelleme İşlemi Başarılı", "title" => "Başarılı", "success" => true, "data" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
                     } else {
-                        return response()->json(["msg"=>"Güncelleme İşlemi Başarısız", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
+                        return response()->json(["msg" => "Güncelleme İşlemi Başarısız", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
                     }
                 }
             } else {
-                return response()->json(["msg"=>"Mevcut Şifreniz Hatalı", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
+                return response()->json(["msg" => "Mevcut Şifreniz Hatalı", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
             }
         } else {
-            return response()->json(["msg"=>"Böyle Bir Kullanıcı Yoktur", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(["msg" => "Böyle Bir Kullanıcı Yoktur", "title" => "Başarısız", "success" => false], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -186,13 +186,13 @@ class indexController extends Controller
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
         }
-        $user = Doctors::where("api_token", $token)->first();
+        $user = Dieticians::where("api_token", $token)->first();
         if ($user) {
             $data["api_token"] = Str::random(60);
             if (!empty($data["status"])) {
                 unset($data["status"]);
             }
-            $update = Doctors::where("api_token", $token)->update($data);
+            $update = Dieticians::where("api_token", $token)->update($data);
             if ($update) {
                 return response()->json("Token Güncellendi.", 200, [], JSON_UNESCAPED_UNICODE);
             } else {
@@ -204,12 +204,13 @@ class indexController extends Controller
     }
 
 
-    public function appointment_conf(Request $request){
+    public function appointment_conf(Request $request)
+    {
         $auth = $request->header("Authorization");
-        if ($auth){
+        if ($auth) {
             dd($request->all());
-        }else{
-            return response()->json("Böyle Bir Kullanıcı Yoktur.",200,[],JSON_UNESCAPED_UNICODE);
+        } else {
+            return response()->json("Böyle Bir Kullanıcı Yoktur.", 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
 }

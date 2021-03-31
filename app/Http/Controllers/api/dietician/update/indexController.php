@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api\dietician\update;
 
 use App\Http\Controllers\Controller;
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use Illuminate\Http\Request;
 
 class indexController extends Controller
@@ -15,16 +15,16 @@ class indexController extends Controller
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
         }
-        $dietician = Doctors::where("api_token", $token)->first();
+        $dietician = Dieticians::where("api_token", $token)->first();
         if ($dietician) {
             $data = $request->except("_token");
-            if(!empty($data["status"])){
+            if (!empty($data["status"])) {
                 unset($data["status"]);
             }
-            $update = Doctors::where("api_token", $token)->update($data);
+            $update = Dieticians::where("api_token", $token)->update($data);
             if ($update) {
-                $dietician=Doctors::where("api_token",$token)->first();
-                return response()->json(["msg"=>"Güncelleme İşlemi Başarılı","title"=>"Başarılı","success"=>true,"data"=>$dietician], 200, [], JSON_UNESCAPED_UNICODE);
+                $dietician = Dieticians::where("api_token", $token)->first();
+                return response()->json(["msg" => "Güncelleme İşlemi Başarılı", "title" => "Başarılı", "success" => true, "data" => $dietician], 200, [], JSON_UNESCAPED_UNICODE);
             } else {
                 return response()->json("Güncelleme İşlemi Başarısız", 200, [], JSON_UNESCAPED_UNICODE);
             }

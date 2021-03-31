@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Model\Theme\User;
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use Closure;
 
 class ApiToken
@@ -24,8 +24,8 @@ class ApiToken
                 return response()->json(["message" => "Token Bilginiz Bulunmamaktadır."], 401, [], JSON_UNESCAPED_UNICODE);
             }
             $user = User::where("api_token", $token)->first();
-            $doctor = Doctors::where("api_token", $token)->first();
-            if (!$user && !$doctor) {
+            $dietician = Dieticians::where("api_token", $token)->first();
+            if (!$user && !$dietician) {
                 return response()->json(["message" => "Token Bilgisine Ait Kullanıcı Bulunmamaktadır."], 401, [], JSON_UNESCAPED_UNICODE);
             }
             return $next($request);

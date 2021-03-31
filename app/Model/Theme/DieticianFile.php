@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Model\Theme;
+
 use Illuminate\Notifications\Notifiable;
-use Jenssegers\Mongodb\Eloquent\Model ;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Auth\Authenticatable as Authenticabletrait;
 use Illuminate\Contracts\Auth\Authenticatable;
 
@@ -10,7 +11,7 @@ class DieticianFile extends Model implements Authenticatable
 {
     use Authenticabletrait;
     use Notifiable;
-    protected $connection="mongodb";
+    protected $connection = "mongodb";
     protected $collection = 'dieticians_file';
     protected $primarykey = "_id";
     protected $casts = [
@@ -19,6 +20,6 @@ class DieticianFile extends Model implements Authenticatable
 
     public function dietician()
     {
-        return $this->belongsTo(Doctors::class);
+        return $this->belongsTo(Dieticians::class);
     }
 }

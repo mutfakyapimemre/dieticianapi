@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Model\Theme\Doctors;
+use App\Model\Theme\Dieticians;
 use Closure;
 
 class DieticianStatus
@@ -19,7 +19,7 @@ class DieticianStatus
         $auth = $request->header("Authorization");
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);
-            $admin = Doctors::where("api_token", $token)->where("status", "dietician")->first();
+            $admin = Dieticians::where("api_token", $token)->where("status", "dietician")->first();
             if (!$admin) {
                 return response()->json("Bu İşlemler İçin Yetkili Değilsiniz.", 200, [], JSON_UNESCAPED_UNICODE);
             } else {
