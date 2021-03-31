@@ -27,6 +27,33 @@ class indexController extends Controller
             }
         }
     }
+
+    public function dieticians(Request $request)
+    {
+        $per_page = empty($request->per_page) ? 12 : (int)$request->per_page;
+        if (!empty($request->search)) :
+            $search = $request->search;
+
+            $this->viewData->dieticians = Dieticians::where(["isActive" => 1])
+                ->where(function ($query) use ($search) {
+                    $query->where("name", "like", "%" . Str::strto("lower", $search) . "%")
+                        ->orWhere("name", "like", "%" . Str::strto("lower|ucfirst", $search) . "%")
+                        ->orWhere("name", "like", "%" . Str::strto("lower|ucwords", $search) . "%")
+                        ->orWhere("name", "like", "%" . Str::strto("lower|upper", $search) . "%")
+                        ->orWhere("name", "like", "%" . Str::strto("lower|capitalizefirst", $search) . "%");
+                })
+                ->paginate($per_page);
+        else :
+            $this->viewData->dieticians = Dieticians::where("isActive", 1)->paginate($per_page);
+        endif;
+        foreach ($this->viewData->dieticians as $dietician) {
+            if (!empty($dietician->profilePhoto)) {
+                $this->viewData->dieticians->profile_photo = $dietician->profilePhoto;
+            }
+        }
+        return response()->json(["data" => $this->viewData], 200, [], JSON_UNESCAPED_UNICODE);
+    }
+
     public function login(Request $request)
     {
         $dietician = Dieticians::where("email", $request->email)->where("isActive", 1)->first();
