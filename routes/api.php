@@ -76,6 +76,7 @@ Route::group(['namespace' => 'api'], function () {
             });
         });
         Route::group(["namespace" => "dieticians", "as" => "dieticians.", "prefix" => "dieticians"], function () {
+            Route::get("/dietician", "indexController@dietician")->name("dietician");
             Route::get("/login", "indexController@login")->name("login");
             Route::post("/login", "indexController@login")->name("login");
             Route::post("/register", "indexController@register")->name("register");
@@ -86,9 +87,6 @@ Route::group(['namespace' => 'api'], function () {
                 Route::post("/pass_update", "indexController@pass_update")->name("pass_update");
                 Route::post("/logout", "indexController@logout")->name("logout");
             });
-        });
-        Route::group(["namespace" => "dieticians", "as" => "dieticians.", "prefix" => "dieticians"], function () {
-            Route::get("/", "indexController@index")->name("index");
         });
     });
 

@@ -22139,3 +22139,5 @@
 "} 
 [2021-03-31 13:00:28] local.INFO: [2021-03-31 13:00:28][120.16761302948 ms][::1][GET][http://localhost/dieticianapi/api/home]  
 [2021-03-31 13:03:32] local.INFO: [2021-03-31 13:03:32][53.339505195618 ms][::1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-31 13:04:05] local.INFO: [2021-03-31 13:04:05][68.055486679077 ms][127.0.0.1][GET][http://localhost/dieticianapi/api/home]  
+[2021-03-31 13:04:07] local.INFO: [2021-03-31 13:04:07][69.706201553345 ms][::1][GET][http://localhost/dieticianapi/api/home]  
