@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use App\Http\Helpers\Helper;
 
 
 class indexController extends Controller
@@ -26,6 +27,7 @@ class indexController extends Controller
         if ($user) {
             $this->user = $user;
         }
+
     }
 
     public function index()
@@ -267,11 +269,11 @@ class indexController extends Controller
         }
          foreach ($request->search_columns as $k=>$column) {
             $response=$response->where(function($query) use ($column,$request){
-				$query->orwhere($column,"like","%". Str::strto("lower", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|ucfirst", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|ucwords", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|upper", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|capitalizefirst", $request->search)."%");
+				$query->orwhere($column,"like","%". Helper::strto("lower", $request->search)."%")
+						->orWhere($column,"like","%".Helper::strto("lower|ucfirst", $request->search)."%")
+						->orWhere($column,"like","%".Helper::strto("lower|ucwords", $request->search)."%")
+						->orWhere($column,"like","%".Helper::strto("lower|upper", $request->search)."%")
+						->orWhere($column,"like","%".Helper::strto("lower|capitalizefirst", $request->search)."%");
             });
         }
 		$response = $response->with("recipes");

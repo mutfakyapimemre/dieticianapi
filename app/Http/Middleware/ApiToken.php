@@ -17,6 +17,7 @@ class ApiToken
      */
     public function handle($request, Closure $next)
     {
+
         $auth = $request->header("Authorization");
         if ($auth) {
             $token = str_replace("Bearer ", "", $auth);

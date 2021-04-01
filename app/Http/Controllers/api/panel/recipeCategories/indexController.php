@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
+use App\Helpers\tools_helper;
 
 
 class indexController extends Controller
@@ -30,6 +30,7 @@ class indexController extends Controller
     public function index()
     {
         $nutrients = DB::table("recipes")->get();
+
         if ($nutrients) {
             return response()->json(["success" => true, "data" => $nutrients], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
@@ -213,11 +214,11 @@ class indexController extends Controller
         }
          foreach ($request->search_columns as $k=>$column) {
             $response=$response->where(function($query) use ($column,$request){
-				$query->orwhere($column,"like","%". Str::strto("lower", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|ucfirst", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|ucwords", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|upper", $request->search)."%")
-						->orWhere($column,"like","%".Str::strto("lower|capitalizefirst", $request->search)."%");
+				$query->orwhere($column,"like","%". tools_helper::strto("lower", $request->search)."%")
+						->orWhere($column,"like","%".tools_helper::strto("lower|ucfirst", $request->search)."%")
+						->orWhere($column,"like","%".tools_helper::strto("lower|ucwords", $request->search)."%")
+						->orWhere($column,"like","%".tools_helper::strto("lower|upper", $request->search)."%")
+						->orWhere($column,"like","%".tools_helper::strto("lower|capitalizefirst", $request->search)."%");
             });
         }
 		$response = $response->with("recipe_categories");

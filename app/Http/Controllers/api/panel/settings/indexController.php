@@ -17,6 +17,7 @@ class indexController extends Controller
 
     public function __construct(Request $request)
     {
+        /*
         $bearer = $request->header("Authorization");
         $bearer = str_replace("Bearer ", "", $bearer);
         $user = User::where("api_token", $bearer)
@@ -24,24 +25,25 @@ class indexController extends Controller
         if ($user) {
             $this->user = $user;
         }
+        */
     }
 
     public function index()
     {
-            $settings = DB::table("settings")->get();
-
+        $settings = DB::table("settings")->get();
+        dd($settings);
         if ($settings) {
-            return response()->json(["success"=>true,"data"=>$settings], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(["success" => true, "data" => $settings], 200, [], JSON_UNESCAPED_UNICODE);
         } else {
-            return response()->json(["success"=>false,"title"=>"Başarısız!","msg"=>"Site Ayarları Listelenirken Bir Hata Olşutu!"], 200, [], JSON_UNESCAPED_UNICODE);
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Site Ayarları Listelenirken Bir Hata Olşutu!"], 200, [], JSON_UNESCAPED_UNICODE);
         }
+
     }
 
     public function store(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            "title" => "required",
             "company_name" => "required",
             "phone" => "required",
             "email" => "required|email"
@@ -53,7 +55,7 @@ class indexController extends Controller
             $data = $request->except("_token");
             if ($request->file()) {
                 $photos = [];
-                foreach ($request->file() as $key => $file):
+                foreach ($request->file() as $key => $file) :
                     $photo = $request->file($key);
                     $path = $request->$key->path();
                     $extension = $request->$key->extension();
@@ -75,10 +77,9 @@ class indexController extends Controller
                         }
                     }
                 endforeach;
-
             }
-            $count=DB::table("settings")->count();
-            $data["rank"]=$count+1;
+            $count = DB::table("settings")->count();
+            $data["rank"] = $count + 1;
             $settings = DB::table("settings")->insertGetId($data);
             $data = DB::table("settings")->where("_id", $settings)->first();
 
@@ -90,13 +91,11 @@ class indexController extends Controller
     {
         $settings = DB::table("settings")
             ->where("_id", $id)->first();
-        if($settings){
-            return response(["success"=>true,"data"=>$settings], 200,[],JSON_UNESCAPED_UNICODE);
-        }else{
-            return response()->json(["success"=>false,"title"=>"Başarısız!","msg"=>"Böyle Bir Veri Bulunamadı!"], 200, [], JSON_UNESCAPED_UNICODE);
-
+        if ($settings) {
+            return response(["success" => true, "data" => $settings], 200, [], JSON_UNESCAPED_UNICODE);
+        } else {
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Böyle Bir Veri Bulunamadı!"], 200, [], JSON_UNESCAPED_UNICODE);
         }
-
     }
 
     public function update($id, Request $request)
@@ -106,7 +105,6 @@ class indexController extends Controller
             unset($data["_id"]);
         }
         $validator = Validator::make($request->all(), [
-            "title" => "required",
             "company_name" => "required",
             "phone" => "required",
             "email" => "required|email"
@@ -118,7 +116,7 @@ class indexController extends Controller
             $data = $request->except("_token");
             if ($request->file()) {
                 $photos = [];
-                foreach ($request->file() as $key => $file):
+                foreach ($request->file() as $key => $file) :
                     $photo = $request->file($key);
                     $path = $request->$key->path();
                     $extension = $request->$key->extension();
@@ -140,9 +138,8 @@ class indexController extends Controller
                         }
                     }
                 endforeach;
-
             }
-            $data = DB::table("settings")->where("_id",$id)->update($data);
+            $data = DB::table("settings")->where("_id", $id)->update($data);
             return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Ayarlarınız Başarıyla Güncellendi", "data" => $data], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -151,12 +148,11 @@ class indexController extends Controller
     {
         $settings = DB::table("settings")
             ->where("_id", $id)->delete();
-        if($settings){
+        if ($settings) {
             $settings = DB::table("settings")->get();
-            return response()->json(["success"=>true,"title"=>"Başarılı!","msg"=>"Ayarınız Başarıyla Silindi","data"=>$settings],200,[],JSON_UNESCAPED_UNICODE);
-        }else{
-            return response()->json(["success"=>false,"title"=>"Başarısız!","msg"=>"Ayarınız Silinirken Bir Hata İle Karşılaşıldı."],200,[],JSON_UNESCAPED_UNICODE);
-
+            return response()->json(["success" => true, "title" => "Başarılı!", "msg" => "Ayarınız Başarıyla Silindi", "data" => $settings], 200, [], JSON_UNESCAPED_UNICODE);
+        } else {
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Ayarınız Silinirken Bir Hata İle Karşılaşıldı."], 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
 }
