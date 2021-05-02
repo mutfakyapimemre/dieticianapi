@@ -137,8 +137,8 @@ Route::group(['namespace' => 'api'], function () {
                 Route::group(['namespace' => 'sliders', "as" => "sliders.", "prefix" => "sliders"], function () {
                     Route::get("/", "indexController@index")->name("index");
                     Route::post("/create", "indexController@store")->name("store");
-                    Route::get("/update/{id}", "indexController@edit")->name("edit");
-                    Route::post("/update/{id}", "indexController@update")->name("update");
+                    Route::match(['get', 'post'],"/update/{id}", "indexController@edit")->name("edit");
+                    //Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
                     Route::get('/get-all', 'indexController@getAll')->name("getAll");
                     Route::get('/get-by-search', 'indexController@getBySearch');
@@ -315,7 +315,22 @@ Route::group(['namespace' => 'api'], function () {
                     Route::get("/update/{id}", "indexController@edit")->name("edit");
                     Route::post("/update/{id}", "indexController@update")->name("update");
                     Route::delete("/delete/{id}", "indexController@destroy")->name("destroy");
-                    Route::get("/get-user", "indexController@getUser")->name("getUser");
+                    /*
+                     * Buraya Post at get sorgusu her zaman çalışmaz o yüzden match kullandım (get-user)
+                     */
+                    Route::match(['get','post'],"/get-user", "indexController@getUser")->name("getUser");
+                    /*
+                     * birthcalc attığın değer 1991-01-30 şeklinde olucak eğer kullanıcıda yaş yoksa 1-2-3 month gibi dönüş verir
+                     */
+                    Route::match(['get','post'],"/birthcalc", "indexController@userBirthCalc")->name("userBirthCalc");
+                    /*
+                     * Danışan Hastalık kayıt /user-diseases
+                     */
+                    Route::post("/user-diseases", "indexController@userDiseases")->name("userDiseases");
+                    /*
+                     * Diyet Öğün Kaydı
+                     */
+                    Route::post("/user-meal", "indexController@dietMeal")->name("dietMeal");
                     Route::post("/user-mail", "indexController@userMail")->name("userMail");
                 });
                 Route::group(["namespace" => "recipes", "as" => "recipes.", "prefix" => "recipes"], function () {
