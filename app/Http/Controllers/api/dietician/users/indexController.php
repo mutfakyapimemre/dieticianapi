@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Model\Theme\Settings;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use App\Model\Panel\Diseases;
 
 
 class indexController extends Controller
@@ -29,13 +31,29 @@ class indexController extends Controller
         }
     }
 
+    public function userBirthCalc(Request $request)
+    {
+        $dateOfBirth = $request->dates;
+        $yearsOrmonth = Carbon::parse($dateOfBirth)->age;
+        if ($yearsOrmonth > 0)
+        {
+            $years = Carbon::parse($dateOfBirth)->age;
+
+        }else
+        {
+            $years = Carbon::parse($dateOfBirth)->diff(Carbon::now())->format('%m months');
+        }
+        return response($years,200,[],JSON_UNESCAPED_UNICODE);
+    }
+
     public function store(Request $request)
     {
         $data = $request->except("_token");
-        $data["password"] = Hash::make($data["password"]);
+        //$data["password"] = Hash::make($data["password"]);
         $users = DB::table("users")
             ->insert($data);
-        return response($users, 200, [], JSON_UNESCAPED_UNICODE);
+      //dd($users);
+       return response($users, 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function edit($id)
@@ -53,10 +71,13 @@ class indexController extends Controller
 
     public function getUser(Request $request)
     {
-        $users = DB::table("users")
-            ->where("tc", $request->tc)
-            ->where("phone", $request->phone)
+
+         $users = User::where('tckn', $request->tc)//where("tc", $request->tc)
+            //->where("phone", $request->phone)
             ->first();
+
+
+       // print_r($users);
         if ($users) {
             return response()->json(["data" => $users], 200);
         } else {
@@ -102,6 +123,66 @@ class indexController extends Controller
         }
     }
 
+    public function userDiseases(Request $request)
+    {
+        $users = DB::table("users")
+            ->where("tc", $request->tc)
+            ->where("phone", $request->phone)
+            ->first();
+
+        $dietician = DB::table("dieticians")
+            ->where("_id", $request->dietician_id)
+            ->first();
+
+        $data = [
+          "ditican_id" => $dietician,
+            "user_id" =>  $users
+
+        ];
+        foreach ($request->diseaseName as $key => $disease) {
+            $add_data["title"] = $disease;
+        }
+
+        $dataInsert = DB::table("users_diseases")
+            ->insert($data)
+            ->insert($add_data);
+
+        if ($dataInsert) {
+            return response()->json(["data" => $data,"data" => $add_data], 200);
+        } else {
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Bu Bilgilere Ait Bir Kullanıcı Bulunmamaktadır."], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+
+    }
+
+    public function dietMeal(Request $request)
+    {
+        $users = DB::table("users")
+            ->where("tc", $request->tc)
+            ->where("phone", $request->phone)
+            ->first();
+
+        $dietician = DB::table("dieticians")
+            ->where("_id", $request->dietician_id)
+            ->first();
+
+        $dataInsert = [
+            "ditican_id" => $dietician,
+            "user_id" =>  $users,
+            "morning"=> $request->morning,
+            "noon" => $request->noon,
+            "vesper" =>$request->vesper,
+            "birding" => $request->birding, //Çaktırma kuşluk vakti bu :D
+            "afternoon" => $request->afernoon,
+            "night" => $request->night
+        ];
+        if ($dataInsert) {
+            return response()->json(["data" => $dataInsert], 200);
+        } else {
+            return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Bu Bilgilere Ait Bir Kullanıcı Bulunmamaktadır."], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function update($id, Request $request)
     {
         if ($request->id) {
@@ -131,4 +212,5 @@ class indexController extends Controller
             return response()->json("Silme İşlemi Başarılı", 200, [], JSON_UNESCAPED_UNICODE);
         }
     }
+
 }

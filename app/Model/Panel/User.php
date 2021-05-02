@@ -8,11 +8,16 @@ use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Auth\Authenticatable as Authenticabletrait;
 use Illuminate\Contracts\Auth\Authenticatable;
 
+
+
 class User extends Model implements Authenticatable
 {
     use Authenticabletrait;
     use Notifiable;
     protected $connection = "mongodb";
+    protected $collection = 'users';
+    protected $guarded = [];
+    protected $primarykey = "_id";
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +25,7 @@ class User extends Model implements Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','tc','phone'
     ];
 
     /**
