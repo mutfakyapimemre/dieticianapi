@@ -320,4 +320,6 @@ class indexController extends Controller
         }*/
         return response()->json(["data" => $response, "empty_url" => "uploads/settings/preparing/my.jpg"]);
     }
+
+
 }
