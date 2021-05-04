@@ -13,7 +13,7 @@ use App\Model\Theme\NutrientsValues;
 use App\Model\Panel\Diseases;
 use Carbon\Carbon;
 
-class indexController extends Controller
+class newbornCalc extends Controller
 {
     public $user = "";
 
