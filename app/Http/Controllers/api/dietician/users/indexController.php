@@ -136,7 +136,7 @@ class indexController extends Controller
 
         $data = [
           "ditican_id" => $dietician,
-            "user_id" =>  $users
+            "user_id" =>  $users->id,
 
         ];
         foreach ($request->diseaseName as $key => $disease) {
