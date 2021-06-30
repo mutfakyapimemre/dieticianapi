@@ -125,6 +125,8 @@ class indexController extends Controller
 
     public function userDiseases(Request $request)
     {
+
+
         $users = DB::table("users")
             ->where("tc", $request->tc)
             ->where("phone", $request->phone)
@@ -153,6 +155,13 @@ class indexController extends Controller
             return response()->json(["success" => false, "title" => "Başarısız!", "msg" => "Bu Bilgilere Ait Bir Kullanıcı Bulunmamaktadır."], 200, [], JSON_UNESCAPED_UNICODE);
         }
 
+    }
+
+    public function getAllDiseases()
+    {
+        $data["diseases"] = DB::table("diseases")->where("isActive", 1)->get();
+        //dd($data["diseases"]);
+        return response()->json(["data" => $data], 200);
     }
 
     public function dietMeal(Request $request)

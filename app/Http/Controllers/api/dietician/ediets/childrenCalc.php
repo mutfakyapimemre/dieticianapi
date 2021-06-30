@@ -27,4 +27,38 @@ class childrenCalc extends Controller
             $this->user = $user;
         }
     }
+
+    public function childrenWeight(Request $request)
+    {
+
+        $user = DB::table("users")->where("_id", $request->id)->first();
+        $userAge = User::userBirthCalc($user->birthDay);
+        $ogaTable = DB::table("oga_table")->where("age", $userAge)->first();
+        return $ogaTable;
+    }
+
+    public function childrenlength (Request $request)
+    {
+        $user = DB::table("users")->where("_id", $request->id)->first();
+        $userAge = User::userBirthCalc($user->birthDay);
+        $childrenLeng = DB::table("oga_bki")->where("age", $userAge)->first();
+        return $childrenLeng;
+    }
+
+    public function childrenNutritionalRisk(Request $request)
+    {
+        $user = DB::table("users")->where("_id", $request->id)->first();
+        $userAge = User::userBirthCalc($user->birthDay);
+        $ogaTable = DB::table("oga_table")->where("age", $userAge)->first();
+        $calcNrisk = ($user->weight / $ogaTable->value)*100;
+        $dbNrisk = DB::table("users")->where("max", $calcNrisk)->first();
+        if ($dbNrisk >= $calcNrisk)
+        {
+            return $dbNrisk->status;
+
+        }else{
+
+            return $dbNrisk->status;
+        }
+    }
 }
