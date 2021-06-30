@@ -327,6 +327,7 @@ Route::group(['namespace' => 'api'], function () {
                      * Danışan Hastalık kayıt /user-diseases
                      */
                     Route::post("/user-diseases", "indexController@userDiseases")->name("userDiseases");
+                    Route::get("/user-diseases-get", "indexController@getAllDiseases")->name("userDiseasesGet");
                     /*
                      * Diyet Öğün Kaydı
                      */
