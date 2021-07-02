@@ -1,9 +1,9 @@
 <?php
+
 setlocale(LC_ALL, 'tr_TR.utf8');
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,7 +27,7 @@ Route::get("getNutritionList", "api\\panel\\nutrients\\indexController@index");
 Route::group(['namespace' => 'api'], function () {
     Route::group(["namespace" => "theme", "as" => "theme."], function () {
         Route::group(['namespace' => 'home', "as" => "home.", "prefix" => "home"], function () {
-            Route::get("/", "indexController@index")->name("index");
+            Route::match(["get","post"],"/", "indexController@index")->name("index");
             Route::get("/search", "indexController@search")->name("search");
         });
 

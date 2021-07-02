@@ -53,7 +53,7 @@ class indexController extends Controller
         $users = DB::table("users")
             ->insert($data);
       //dd($users);
-       return response($users, 200, [], JSON_UNESCAPED_UNICODE);
+       return response(["success" => true, "title" => "Başarılı!", "msg" => "Kullanıcı Kayıt Edildi.","userid" => $users->id], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function edit($id)

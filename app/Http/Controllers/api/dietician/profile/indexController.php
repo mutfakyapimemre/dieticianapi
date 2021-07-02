@@ -51,7 +51,7 @@ class indexController extends Controller
                     $dietician["company_towns"] = DB::table("towns")->select("name", "districts")->whereIn("_id", $dietician["company_city"]["towns"])->get();
                     $dietician["company_city"] = $dietician["company_city"]["name"];
                     $towns = DB::table("towns")->select("name", "districts")->where("name", $data->company_town)->first();
-                    $dietician["company_districts"] = DB::table("districts")->select("name", "neigborhoods")->whereIn("_id", $towns["districts"])->get();
+                    $dietician["company_districts"] = DB::table("districts")->select("name", "neigborhoods")->where("_id", $towns["districts"])->get();
                     $districts = DB::table("districts")->where("name", $data->company_district)->first();
                     $dietician["company_neighborhoods"] = DB::table("neighborhoods")->select("name")->whereIn("_id", $districts["neighborhoods"])->get();
                 } else {

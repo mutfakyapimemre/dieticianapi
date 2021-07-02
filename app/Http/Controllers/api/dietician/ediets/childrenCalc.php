@@ -61,4 +61,5 @@ class childrenCalc extends Controller
             return $dbNrisk->status;
         }
     }
+
 }

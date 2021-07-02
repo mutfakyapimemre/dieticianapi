@@ -34,6 +34,7 @@ class indexController extends Controller
 
     public function index()
     {
+
         $this->viewData->sliders = Sliders::where("isActive", 1)->get();
         $dcount = Dieticians::count();
         $start = rand(0, $dcount - 8);
